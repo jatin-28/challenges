@@ -22,7 +22,14 @@ public class GuitarSubSetFinder {
         List<Integer> listCopy = new ArrayList<>(input); // TODO can be made faster with the sort and reverse at the same time
         listCopy.sort(Collections.reverseOrder());
 
-        List<Integer> outputList = addCombinations(listCopy.get(0), listCopy.subList(1, listCopy.size()), totalSum);
+        List<Integer> tail = listCopy.subList(1, listCopy.size());
+        List<Integer> outputList = addCombinations(listCopy.get(0), tail, totalSum);
+
+//        Integer testSum = outputList.stream().mapToInt(x -> x).sum();
+//
+//        if(testSum != totalSum && !tail.isEmpty()) {
+//            findGuitarSubList(tail, totalSum);
+//        }
 
         System.out.println("Output list: " + outputList);
         return outputList;
@@ -36,12 +43,11 @@ public class GuitarSubSetFinder {
             totalSum -= head;
         }
 
-        if( tail.size() == 1) {
-            List<Integer> returnList = addCombinations(tail.get(0), emptyList(), totalSum);
-            outputList.addAll(returnList);
+        if(!tail.isEmpty()) {
+            List<Integer> nextTail = tail.size() == 1 ? emptyList() : tail.subList(1, tail.size());
 
-        } if( tail.size() >= 2) {
-            outputList.addAll(addCombinations(tail.get(0), tail.subList(1, tail.size()), totalSum));
+            List<Integer> returnList = addCombinations(tail.get(0), nextTail, totalSum);
+            outputList.addAll(returnList);
         }
         return outputList;
     }
