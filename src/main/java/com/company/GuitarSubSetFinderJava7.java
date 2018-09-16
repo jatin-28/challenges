@@ -20,20 +20,19 @@ public class GuitarSubSetFinderJava7 implements GuitarSubSetFinder {
         System.out.println(String.format("totalSum: %d, inputlist: %s", totalSum, input));
 
         if(input.isEmpty()) return new ArrayList<>();
-        List<Integer> listCopy = new ArrayList<>(input); // TODO can be made faster with the sort and reverse at the same time
+        List<Integer> listCopy = new ArrayList<>(input);
         listCopy.sort(Collections.reverseOrder());
 
         List<Integer> tail = listCopy.subList(1, listCopy.size());
         List<Integer> outputList = addCombinations(listCopy.get(0), tail, totalSum);
 
-//        Integer testSum = outputList.stream().mapToInt(x -> x).sum();
-//
-//        if(testSum != totalSum && !tail.isEmpty()) {
-//            findGuitarSubList(tail, totalSum);
-//        }
-
         System.out.println("Output list: " + outputList);
         return outputList;
+    }
+
+    @Override
+    public boolean isGuitarSet(List<Integer> input, int targetNumber) {
+        return false;
     }
 
     private List<Integer> addCombinations(Integer head, List<Integer> tail, int totalSum) {
