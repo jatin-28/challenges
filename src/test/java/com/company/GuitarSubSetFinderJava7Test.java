@@ -12,9 +12,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  *
  */
-public class GuitarSubSetFinderTest {
+public class GuitarSubSetFinderJava7Test {
 
-    private GuitarSubSetFinder testObj = new GuitarSubSetFinder();
+    private GuitarSubSetFinder testObj = new GuitarSubSetFinderJava7();
 
     // inout:
     // 24
@@ -33,7 +33,7 @@ public class GuitarSubSetFinderTest {
     public void emptyInputArray() {
         List<Integer> actual = testObj.findGuitarSubList(Collections.emptyList(), 43);
 
-        assertThat(actual).isEmpty();
+        assertThat(actual).containsExactlyInAnyOrder();
     }
 
     @Test
@@ -42,7 +42,7 @@ public class GuitarSubSetFinderTest {
 
         List<Integer> actual = testObj.findGuitarSubList(input, 24);
 
-        assertThat(actual).containsAll(Arrays.asList(12,9,2,1));
+        assertThat(actual).containsExactlyInAnyOrder(12,9,2,1);
 
     }
 
