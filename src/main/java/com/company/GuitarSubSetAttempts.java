@@ -47,7 +47,7 @@ public class GuitarSubSetAttempts {
         return addCombinationsSecondAttempt(input.get(0), input.subList(1, input.size()), totalSum);
     }
 
-    private List<Integer> addCombinationsSecondAttempt(Integer head, List<Integer> input, int totalSum) {
+    private List<Integer> addCombinationsSecondAttempt(Integer head, List<Integer> tail, int totalSum) {
         List<Integer> outputList = new ArrayList<>();
 
         if (totalSum - head >= 0) {
@@ -56,20 +56,14 @@ public class GuitarSubSetAttempts {
             System.out.println("added==" + outputList);
         }
 
-        if(totalSum == 0) {
-//            System.out.println("first_totalSum output: " +outputList);
-            //return outputList;
-        } else if( input.isEmpty()) {
-//            System.out.println("first_isEmpty output: " +outputList);
-            //return outputList;
-        } else if( input.size() == 1) {
-            List<Integer> returnList = addCombinationsSecondAttempt(input.get(0), emptyList(), totalSum);
+        if( tail.size() == 1) {
+            List<Integer> returnList = addCombinationsSecondAttempt(tail.get(0), emptyList(), totalSum);
             outputList.addAll(returnList);
 
             //if(outputList.stream)
 
-        } if( input.size() >= 2) {
-            outputList.addAll(addCombinationsSecondAttempt(input.get(0), input.subList(1, input.size()), totalSum));
+        } if( tail.size() >= 2) {
+            outputList.addAll(addCombinationsSecondAttempt(tail.get(0), tail.subList(1, tail.size()), totalSum));
         }
 
         System.out.println("output==" + outputList);
