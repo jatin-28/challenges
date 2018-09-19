@@ -19,11 +19,7 @@ public class GuitarSubSetFinderJava8 implements GuitarSubSetFinder{
 
         List<Integer> outputList = input.stream()
                 .sorted(Collections.reverseOrder())
-                .filter(i -> {
-                            boolean isWanted = currentTotalList.stream().mapToInt(s -> s).sum() + i <= targetNumber;
-                            if (isWanted) currentTotalList.add(i);
-                            return isWanted;
-                        }
+                .filter(i -> currentTotalList.stream().mapToInt(s -> s).sum() + i <= targetNumber && currentTotalList.add(i)
                 ).collect(Collectors.toList());
 
         System.out.println("Java 8: Output list: " + outputList);
@@ -48,7 +44,7 @@ public class GuitarSubSetFinderJava8 implements GuitarSubSetFinder{
         List<Integer> inputList = Arrays.stream(inputListStr.split(","))
                                 .mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
 
-        GuitarSubSetFinder guitarSubSetFinder = new GuitarSubSetFinderJava8();
+        GuitarSubSetFinder guitarSubSetFinder = new GuitarSubSetFinderKot();
         boolean isGuitarSubSet = guitarSubSetFinder.isGuitarSet(inputList, targetNumber);
 
         System.out.println("Is guitar subset: " + isGuitarSubSet);

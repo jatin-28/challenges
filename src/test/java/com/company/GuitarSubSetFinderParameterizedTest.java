@@ -31,6 +31,7 @@ public class GuitarSubSetFinderParameterizedTest {
     }
 
 
+    private GuitarSubSetFinder testObjKotlin = new GuitarSubSetFinderKot();
     private GuitarSubSetFinder testObjJava7 = new GuitarSubSetFinderJava7();
     private GuitarSubSetFinder testObjJava8 = new GuitarSubSetFinderJava8();
 
@@ -46,6 +47,7 @@ public class GuitarSubSetFinderParameterizedTest {
 
     @Test
     public void executeTest() {
+        assertThat(testObjKotlin.findGuitarSubList(input, sum)).containsExactlyInAnyOrder(expected);
         assertThat(testObjJava7.findGuitarSubList(input, sum)).containsExactlyInAnyOrder(expected);
         assertThat(testObjJava8.findGuitarSubList(input, sum)).containsExactlyInAnyOrder(expected);
     }
