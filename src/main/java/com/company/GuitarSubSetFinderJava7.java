@@ -52,5 +52,8 @@ public class GuitarSubSetFinderJava7 implements GuitarSubSetFinder {
         return outputList;
     }
 
-
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

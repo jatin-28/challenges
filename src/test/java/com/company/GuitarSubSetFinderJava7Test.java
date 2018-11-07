@@ -1,6 +1,5 @@
 package com.company;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -97,14 +96,31 @@ public class GuitarSubSetFinderJava7Test {
     }
 
     @Test
-    @Ignore
+    //@Ignore
     // this case does not exist?
     public void inputListContainsListButNotAsExpected() {
-        int totalSum = 43;
-        List<Integer> input = Arrays.asList(4,60,22,19,20);
+        int totalSum = 24;
+        List<Integer> input = Arrays.asList(12,60,11,9,3,2);
 
         List<Integer> actual = testObj.findGuitarSubList(input, totalSum);
 
-        assertThat(actual).containsExactlyInAnyOrder(1,1,1,20,20);
+        assertThat(actual).containsExactlyInAnyOrder(12,9,3);
     }
+
+    @Test
+    public void name() {
+        System.out.println(nametryFinal());
+    }
+
+    public int nametryFinal() {
+
+        try {
+            return 10;
+        } finally {
+            return 12;
+        }
+
+    }
+
+
 }
